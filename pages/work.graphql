@@ -1,0 +1,14 @@
+query ($email: String) {
+  consultants(where: {email: $email}) {
+    firtName
+    lastName
+    work {
+      ... on Client {
+       
+        name
+        description
+        technology
+      }
+    }
+  }
+}
