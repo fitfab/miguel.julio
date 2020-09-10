@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import styled from 'styled-components'
 import {Main, Container, Footer, Card, Flex} from '../components'
@@ -20,7 +19,7 @@ const PillView = styled.strong`
 `
 
 const Pill = (techStacks: [string]) => {
-  return techStacks.map((tech, index)=> <PillView key={index} className={styles.pill}>{tech}</PillView>)
+  return techStacks.map((tech, index)=> <PillView key={index} >{tech}</PillView>)
 }
 
 const Work = (data: { consultants: any })=> {
@@ -59,9 +58,9 @@ export default function Home() {
       </Head>
 
       <Main>
-        <h1 className={styles.title}>Miguel Julio</h1>
+        <h1 >Miguel Julio</h1>
 
-        <p className={styles.description}>
+        <p >
         a front-end developer with a flair for design
         </p>
 
