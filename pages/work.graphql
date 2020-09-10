@@ -4,7 +4,6 @@ query ($email: String) {
     lastName
     work {
       ... on Client {
-       
         name
         description
         technology
