@@ -4,6 +4,15 @@ import {Main, Container, Footer, Card, Flex} from '../components'
 import {useQuery} from '@apollo/client'
 import WORK_QUERY from './work.graphql'
 
+const media = [
+  "http://fitfab.com/images/bolivia/1024px-Lomas_de_Arena_-_Santa_Cruz,_Bolivia.jpg",
+  "http://fitfab.com/images/bolivia/Cascadas_de_Cuevas_Santa_Cruz_Bolivia.jpg",
+  "http://fitfab.com/images/bolivia/Cerro_Chochis_-_Santa_Cruz_-_Bolivia_.png",
+  "http://fitfab.com/images/bolivia/NL-Cataratas_Arcoiris_Bolivia.jpg",
+  "http://fitfab.com/images/upload/10.JPG",
+  "http://fitfab.com/images/upload/12.JPG"
+]
+
 const PillView = styled.strong`
   display: inline-block;
   border-radius: 16px;
@@ -30,6 +39,16 @@ const Work = (data: { consultants: any })=> {
       <h2>{job.name} &rarr;</h2>
       <p>{job.description}</p>
       {Pill(job.technology)}
+
+
+      <div
+        className="addthis_inline_share_toolbox"
+        data-title={job.name}
+        data-description={job.description}
+        data-url={`fitfab.com?q=i`+index}
+        data-image={media[index]}
+        ></div>
+            
     </Card>
   ))
 }
@@ -71,13 +90,15 @@ export default function Home() {
 
       <Footer>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="http://fitfab.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" />
+          fitfab by miguel julio
         </a>
+        {/* AddThis */}
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5abbea7ec78c38"></script>
+
       </Footer>
     </Container>
   )
