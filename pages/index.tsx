@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 import {Main, Container, Footer, Card, Flex} from '../components'
-import {useQuery} from '@apollo/client'
+import { useQuery } from '@apollo/client'
+import { initializeApollo } from '../lib/apolloClient'
 import WORK_QUERY from './work.graphql'
 
 const media = [
@@ -55,18 +56,9 @@ const Work = (data: { consultants: any })=> {
 
 export default function Home() {
 
-  const {data, loading, error} = useQuery(WORK_QUERY,{
+  const {data = null , loading = null , error = null} = useQuery(WORK_QUERY,{
     variables: {email: 'mjulio.developer@gmail.com'}
   })
-
-  if(error) {
-    return <p>{error}</p>
-  }
-  if(loading) {
-    return <p>Loading...</p>
-  }
-
-  console.log(data)
 
 
   return (
@@ -102,4 +94,21 @@ export default function Home() {
       </Footer>
     </Container>
   )
+}
+
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
+
+  await apolloClient.query({
+    query: WORK_QUERY,
+    variables: {email: 'mjulio.developer@gmail.com'},
+  })
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+    revalidate: 1,
+  }
 }
