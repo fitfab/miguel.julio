@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import {Main, Container, Footer, Card, Flex} from '../components'
-import {useQuery} from '@apollo/client'
+import {Main, Container, Footer, Card, Flex, Pill} from '../components'
+import { useQuery } from '@apollo/client'
+import { initializeApollo } from '../lib/apolloClient'
 import WORK_QUERY from './work.graphql'
 
 const media = [
@@ -13,22 +14,9 @@ const media = [
   "http://fitfab.com/images/upload/12.JPG"
 ]
 
-const PillView = styled.strong`
-  display: inline-block;
-  border-radius: 16px;
-  background: ${({theme})=> theme.colors.primary};
-  color: #fff;
-  line-height: 24px;
-  font-size: 16px;
-  font-weight: 300;
-  padding: 0 16px;
-  margin: 0 8px 8px 0;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-`
 
-const Pill = (techStacks: [string]) => {
-  return techStacks.map((tech, index)=> <PillView key={index} >{tech}</PillView>)
+const TechStack = (techStacks: [string]) => {
+  return techStacks.map((tech, index)=> <Pill key={index} >{tech}</Pill>)
 }
 
 const Work = (data: { consultants: any })=> {
@@ -38,7 +26,7 @@ const Work = (data: { consultants: any })=> {
     <Card href={search+job.name} key={index} target="blank">
       <h2>{job.name} &rarr;</h2>
       <p>{job.description}</p>
-      {Pill(job.technology)}
+      {TechStack(job.technology)}
 
 
       <div
@@ -54,20 +42,19 @@ const Work = (data: { consultants: any })=> {
 }
 
 export default function Home() {
-
+  // GOOD TO KNOW: getStaticProps() gets call at build time
   const {data, loading, error} = useQuery(WORK_QUERY,{
     variables: {email: 'mjulio.developer@gmail.com'}
   })
 
   if(error) {
-    return <p>{error}</p>
+    return <p>error</p>
   }
+
   if(loading) {
-    return <p>Loading...</p>
+    return <p>error</p>
   }
-
-  console.log(data)
-
+  
 
   return (
     <Container>
@@ -78,11 +65,7 @@ export default function Home() {
 
       <Main>
         <h1 >Miguel Julio</h1>
-
-        <p >
-        a front-end developer with a flair for design
-        </p>
-
+        <p >a front-end developer with a flair for design</p>
         <Flex>
             {Work(data)}
         </Flex>
@@ -102,4 +85,20 @@ export default function Home() {
       </Footer>
     </Container>
   )
+}
+
+// GOOD TO KNOW: getStaticProps() gets call at build time
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
+  await apolloClient.query({
+    query: WORK_QUERY,
+    variables: {email: 'mjulio.developer@gmail.com'},
+  })
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+    revalidate: 1,
+  }
 }

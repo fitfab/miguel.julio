@@ -1,18 +1,15 @@
 
 import type { AppProps } from 'next/app';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {ApolloProvider } from '@apollo/client';
+import { useApollo } from '../lib/apolloClient'
 import { ThemeProvider } from 'styled-components'
 import {GlobalStyle} from '../styles/global'
-
 import {theme} from '../styles/theme'
 
 
-const client = new ApolloClient({
-  uri: 'https://api-us-east-1.graphcms.com/v2/ckerhsxkkqv0501yx4zs9bv50/master',
-  cache: new InMemoryCache()
-});
-
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const client = useApollo(pageProps.initialApolloState)
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme} >
