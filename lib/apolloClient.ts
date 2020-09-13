@@ -11,6 +11,7 @@ function createApolloClient() {
   })
 }
 
+// This function runs both in the Client & the Server
 export function initializeApollo(initialState = null) {
   const _apolloClient = apolloClient ?? createApolloClient()
 
@@ -23,11 +24,12 @@ export function initializeApollo(initialState = null) {
     // combined with the existing cached data
     _apolloClient.cache.restore({ ...existingCache, ...initialState })
   }
+  
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === 'undefined') return _apolloClient
+
   // Create the Apollo Client once in the client
   if (!apolloClient) apolloClient = _apolloClient
-
   return _apolloClient
 }
 

@@ -85,3 +85,17 @@ export const Card = styled.a`
     margin-bottom: 8px;
   }
 `
+
+export const Pill = styled.strong`
+display: inline-block;
+border-radius: 16px;
+background: ${({theme})=> theme.colors.primary};
+color: #fff;
+line-height: 24px;
+font-size: 16px;
+font-weight: 300;
+padding: 0 16px;
+margin: 0 8px 8px 0;
+text-transform: uppercase;
+letter-spacing: .5px;
+`
