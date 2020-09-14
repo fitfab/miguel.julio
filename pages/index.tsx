@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import styled from 'styled-components'
-import {Main, Container, Footer, Card, Flex, Pill} from '../components'
+import {Main, Container, Footer, Card, Flex, Pill} from '@/components'
 import { useQuery } from '@apollo/client'
-import { initializeApollo } from '../lib/apolloClient'
+import { initializeApollo } from '@/lib/apolloClient'
 import WORK_QUERY from './work.graphql'
 
 const media = [
