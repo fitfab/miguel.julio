@@ -20,7 +20,7 @@ a {
 `
 
 export const theme = {
-  colors: {
-    primary: '#FF415C',
-  },
+    colors: {
+        primary: '#FF415C',
+    },
 }

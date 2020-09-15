@@ -69,5 +69,3 @@ given you got folder structure:
 This `import { Card } from '/shared/components'` becomes
 
 `import { Card } from '@/components'`
-
-And this case not much of difference; but if you have the components deep in folder structure, this would be very helpful.
