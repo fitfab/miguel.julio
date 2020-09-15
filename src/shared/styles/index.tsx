@@ -18,3 +18,9 @@ a {
   box-sizing: border-box;
 }
 `
+
+export const theme = {
+    colors: {
+        primary: '#FF415C',
+    },
+}
