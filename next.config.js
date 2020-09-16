@@ -1,6 +1,6 @@
 module.exports = {
     basePath: '/miguel.julio', // for the router
-    assetPrefix: isProd ? '/miguel.julio' : '', // assets (js, images, css, etc...)
+    assetPrefix: '/miguel.julio', // assets (js, images, css, etc...)
     webpack: (config) => {
         config.module.rules.push({
             // This is telling webpack how to load the .graphql files.
