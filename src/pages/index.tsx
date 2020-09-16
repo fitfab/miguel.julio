@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Main, Container, Footer, Card, Flex, Pill } from '@/components'
+import { Main, Container, Footer, Card, Flex, Pill, Fitfab } from '@/components'
 import { useQuery } from '@apollo/client'
 import { initializeApollo } from '@/lib/apolloClient'
 import WORK_QUERY from './work.graphql'
@@ -30,7 +30,6 @@ const Work = (data: { consultants: any }) => {
                 className="addthis_inline_share_toolbox"
                 data-title={job.name}
                 data-description={job.description}
-                data-url={`fitfab.com?q=i` + index}
                 data-image={media[index]}
             ></div>
         </Card>
@@ -59,6 +58,7 @@ export default function Home() {
             </Head>
 
             <Main>
+                <Fitfab />
                 <h1>Miguel Julio</h1>
                 <p>a front-end developer with a flair for design</p>
                 <Flex>{Work(data)}</Flex>
