@@ -30,6 +30,7 @@ const Work = (data: { consultants: any }) => {
                 className="addthis_inline_share_toolbox"
                 data-title={job.name}
                 data-description={job.description}
+                data-url={`https://fitfab.github.io/miguel.julio/?q=i` + index}
                 data-image={media[index]}
             ></div>
         </Card>
@@ -61,6 +62,7 @@ export default function Home() {
                 <Fitfab />
                 <h1>Miguel Julio</h1>
                 <p>a front-end developer with a flair for design</p>
+                <img src="/dog-and-i-in-the-beach.jpg" alt="dog and I in the beach in Uruguay!" />
                 <Flex>{Work(data)}</Flex>
             </Main>
 
