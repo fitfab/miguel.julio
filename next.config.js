@@ -1,7 +1,5 @@
-const isProd = process.env.NODE_ENV === 'production'
-
 module.exports = {
-    // basePath: '/miguel.julio',
+    basePath: '/miguel.julio', // for the router
     assetPrefix: isProd ? '/miguel.julio' : '', // assets (js, images, css, etc...)
     webpack: (config) => {
         config.module.rules.push({

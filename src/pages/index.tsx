@@ -13,6 +13,8 @@ const media = [
     'http://fitfab.com/images/upload/12.JPG',
 ]
 
+const assetFix = '/miguel.julio'
+
 const TechStack = (techStacks: [string]) => {
     return techStacks.map((tech, index) => <Pill key={index}>{tech}</Pill>)
 }
@@ -62,7 +64,7 @@ export default function Home() {
                 <Fitfab />
                 <h1>Miguel Julio</h1>
                 <p>a front-end developer with a flair for design</p>
-                <img src="/dog-and-i-in-the-beach.jpg" alt="dog and I in the beach in Uruguay!" />
+                <img src={`${assetFix}/dog-and-i-in-the-beach.jpg`} alt="dog and I in the beach in Uruguay!" />
                 <Flex>{Work(data)}</Flex>
             </Main>
 
