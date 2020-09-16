@@ -1,8 +1,7 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-const assetFix = '/miguel.julio'
-
+const assetFix = process.env.NEXT_PUBLIC_BASE_PATH || ''
 export default class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
         const sheet = new ServerStyleSheet()

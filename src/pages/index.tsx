@@ -13,7 +13,7 @@ const media = [
     'http://fitfab.com/images/upload/12.JPG',
 ]
 
-const assetFix = '/miguel.julio'
+const assetFix = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const TechStack = (techStacks: [string]) => {
     return techStacks.map((tech, index) => <Pill key={index}>{tech}</Pill>)
