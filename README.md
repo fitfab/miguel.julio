@@ -12,6 +12,8 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+Github Page url: [https://fitfab.github.io/miguel.julio/](https://fitfab.github.io/miguel.julio/)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -45,7 +47,7 @@ This `import { initializeApollo } from '../lib/apolloClient'` becomes
 
 Using "paths" allows you to configure module aliases.
 
-given you got folder structure:
+given you got a folder structure:
 
 ```bash
   - shared
