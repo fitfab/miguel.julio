@@ -100,9 +100,24 @@ export const Pill = styled.strong`
     letter-spacing: 0.5px;
 `
 
-export const SVG = styled.svg`
-    fill: ${({ theme }) => theme.colors.primary};
+export const SVG = styled.div`
+    width: 100%;
+
+    & svg {
+        /* Mobile styles */
+        fill: #0c0c0c;
+        max-height: 31px;
+        width: auto;
+        margin: 0 auto;
+
+        /* Desktop styles */
+        @media screen and (min-width: 768px) {
+            margin: 0 0 0 0;
+            max-height: 43px;
+        }
+    }
 `
+
 export interface FitfabProps {
     brandColor?: string
     defaultColor?: string
